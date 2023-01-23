@@ -5,12 +5,12 @@
 		<title>Internet Art</title>
     <style>
       html {
-        background: url("museum-0.png") no-repeat center center fixed;
+        background: url("museum-label.png") no-repeat center center fixed;
         background-size: cover;
         height: 100%;
         overflow: hidden;
       }
-      #container {
+      .container {
         position: absolute;
         top: 0;
         left: 0;
@@ -33,24 +33,25 @@
         font-size: 14px;
         font-style: italic;
       }
+      #label {
+        margin: auto;
+        width: 420px;
+      }
       
     </style>
 	</head>
   
 	<body>
     <p id="read">press any key to read the exhibit label</p>
-    <div id="container">
+    <div class="container">
     	<button class="btn-basic" id="btn-0"><p>Take me to the Internet Art</p></button>
+		</div>
+    <div class="container">
+    	<img id="label" src="label.png" alt="museum exhibit label">
 		</div>
 	</body>
   
-  <script>
-    let x = window.innerWidth;
-    let y = window.innerHeight;
-    
+  <script>  
     let button = document.getElementById("button")
-    // let labelCont = document.getElementById("label-container")
-    // labelCont.style.left = x / 2 - 50 + 'px'
-    // labelCont.style.top = y / 2.8 + 'px'
   </script>
 </html>
