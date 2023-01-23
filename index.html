@@ -4,22 +4,39 @@
 		<meta charset="utf-8">
 		<title>Internet Art</title>
     <style>
+      html {
+        background: url("full-museum.png") no-repeat center center fixed;
+        background-size: cover;
+        height: 100%;
+        overflow: hidden;
+      }
       #container {
         height: 95vh;
-        display: grid;
       }
       .btn-basic p {
         margin: 1.5px;
       }
       #btn-0 {
-        margin: auto;
+				position: relative;    
       }
       
     </style>
 	</head>
+  
 	<body>
     <div id="container">
     	<button class="btn-basic" id="btn-0"><p>Take me to the Internet Art</p></button>
 		</div>
 	</body>
+  
+  <script>
+    let btnX = 175.5;
+    let btnY = 24.5;
+    let x = window.innerWidth;
+    let y = window.innerHeight;
+    
+    let btn = document.getElementById("btn-0")
+    btn.style.top = x / 2 + 'px'
+    
+  </script>
 </html>
