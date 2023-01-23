@@ -42,7 +42,7 @@
 	</head>
   
 	<body>
-    <div id="page-0" class="container">
+    <div id="page-0" class="container" style="display: grid">
       <button class="btn-basic" id="btn-0"><p>Take me to the Internet Art</p></button>
     </div>
     
@@ -60,13 +60,15 @@
   
   <script>  
     let btn0 = document.getElementById("btn-0")
+    let page0 = document.getElementById("page-0")
     let page1 = document.getElementById("page-1")
     
     function museum() {
-      document.page1.style.display = "block"
+    	page1.style.display = "grid"
+      page0.style.display = "none"
     }
     
-    btn0.addEventListener('click', museum)
+    btn0.addEventListener("click", museum)
     
   </script>
 </html>
