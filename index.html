@@ -30,13 +30,14 @@
 	</body>
   
   <script>
-    let btnX = 175.5;
-    let btnY = 24.5;
+    let btnX = 200;
     let x = window.innerWidth;
     let y = window.innerHeight;
     
     let btn = document.getElementById("btn-0")
-    btn.style.top = x / 2 + 'px'
+    btn.style.left = (x - btnX) / 2 + 'px'
+    btn.style.top = y / 2.8 + 'px'
+    
     
   </script>
 </html>
