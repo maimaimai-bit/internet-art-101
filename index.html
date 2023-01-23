@@ -5,19 +5,20 @@
 		<title>Internet Art</title>
     <style>
       html {
-        background: url("full-museum.png") no-repeat center center fixed;
+        background: url("museum-0.png") no-repeat center center fixed;
         background-size: cover;
         height: 100%;
         overflow: hidden;
       }
       #container {
         height: 95vh;
+        display: grid;
       }
       .btn-basic p {
         margin: 1.5px;
       }
       #btn-0 {
-				position: relative;    
+				margin: auto;  
       }
       
     </style>
@@ -30,14 +31,9 @@
 	</body>
   
   <script>
-    let btnX = 200;
     let x = window.innerWidth;
     let y = window.innerHeight;
     
-    let btn = document.getElementById("btn-0")
-    btn.style.left = (x - btnX) / 2 + 'px'
-    btn.style.top = y / 2.8 + 'px'
-    
-    
+    let button = document.getElementById("button")
   </script>
 </html>
