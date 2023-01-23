@@ -46,13 +46,13 @@
       <button class="btn-basic" id="btn-0"><p>Take me to the Internet Art</p></button>
     </div>
     
-    <div id="page-1" style="display: none;">
+    <div id="page-1" style="display: none">
       <p id="read">press any key to read the exhibit label</p>
       <div class="container">
         <button class="btn-basic" id="btn-1"><p>Take me to the Internet Art</p></button>
       </div>
-      <div class="container">
-        <img id="label" src="label.png" alt="museum exhibit label" style="display: none;">
+      <div id="label-div" class="container" style="display: none">
+        <img id="label" src="label.png" alt="museum exhibit label">
       </div>
     </div>
     
@@ -62,13 +62,28 @@
     let btn0 = document.getElementById("btn-0")
     let page0 = document.getElementById("page-0")
     let page1 = document.getElementById("page-1")
+    let label = document.getElementById("label-div")
+    let read = document.getElementById("read")
     
     function museum() {
-    	page1.style.display = "grid"
       page0.style.display = "none"
+    	page1.style.display = "grid"
     }
     
+    function close() {
+      label.style.display = "none"
+      read.innerText = "press any key to read the exhibit label"
+      window.removeEventListener("keypress", close)
+    }
+    
+    function open() {
+      label.style.display = "grid"
+      read.innerText = "press any key to close the exhibit label"
+      window.addEventListener("keypress", close)
+    }
+     
     btn0.addEventListener("click", museum)
+    window.addEventListener("keypress", open)
     
   </script>
 </html>
