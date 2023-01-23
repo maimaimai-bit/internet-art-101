@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>Internet Art</title>
     <style>
-      html {
+      #page-1 {
         background: url("museum-label.png") no-repeat center center fixed;
         background-size: cover;
         height: 100%;
@@ -21,7 +21,7 @@
       .btn-basic p {
         margin: 1.5px;
       }
-      #btn-0 {
+      .btn-basic {
 				margin: auto;  
       }
       #read {
@@ -42,16 +42,31 @@
 	</head>
   
 	<body>
-    <p id="read">press any key to read the exhibit label</p>
-    <div class="container">
-    	<button class="btn-basic" id="btn-0"><p>Take me to the Internet Art</p></button>
-		</div>
-    <div class="container">
-    	<img id="label" src="label.png" alt="museum exhibit label">
-		</div>
+    <div id="page-0" class="container">
+      <button class="btn-basic" id="btn-0"><p>Take me to the Internet Art</p></button>
+    </div>
+    
+    <div id="page-1" style="display: none;">
+      <p id="read">press any key to read the exhibit label</p>
+      <div class="container">
+        <button class="btn-basic" id="btn-1"><p>Take me to the Internet Art</p></button>
+      </div>
+      <div class="container">
+        <img id="label" src="label.png" alt="museum exhibit label" style="display: none;">
+      </div>
+    </div>
+    
 	</body>
   
   <script>  
-    let button = document.getElementById("button")
+    let btn0 = document.getElementById("btn-0")
+    let page1 = document.getElementById("page-1")
+    
+    function museum() {
+      document.page1.style.display = "block"
+    }
+    
+    btn0.addEventListener('click', museum)
+    
   </script>
 </html>
