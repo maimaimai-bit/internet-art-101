@@ -11,7 +11,11 @@
         overflow: hidden;
       }
       #container {
-        height: 95vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
         display: grid;
       }
       .btn-basic p {
@@ -20,11 +24,21 @@
       #btn-0 {
 				margin: auto;  
       }
+      #read {
+				position: absolute;
+        bottom: 5px;
+        right: 25px;
+        color: #F3CE32;
+        font-family: Arial;
+        font-size: 14px;
+        font-style: italic;
+      }
       
     </style>
 	</head>
   
 	<body>
+    <p id="read">press any key to read the exhibit label</p>
     <div id="container">
     	<button class="btn-basic" id="btn-0"><p>Take me to the Internet Art</p></button>
 		</div>
@@ -35,5 +49,8 @@
     let y = window.innerHeight;
     
     let button = document.getElementById("button")
+    // let labelCont = document.getElementById("label-container")
+    // labelCont.style.left = x / 2 - 50 + 'px'
+    // labelCont.style.top = y / 2.8 + 'px'
   </script>
 </html>
