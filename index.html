@@ -125,6 +125,7 @@
         <p>You were, are, and will be at Internet Art...</p>
         <p>Internet Art can be anything.</p>
       </div>
+      <div id="resize" class="container">	</div> 
     </div>
   </body>
 
@@ -156,18 +157,15 @@
     btn0.addEventListener("click", museum)
     window.addEventListener("keypress", open)
 
-    let w = window.innerWidth
-    let h = window.innerHeight
     let gifw = 28
     let gifh = 35
-    let cx = w / 2 - gifw
-    let cy = h / 2 - gifh
     let page2 = document.getElementById("page-2")
+    let resize = document.getElementById("resize")
 
     function createGif(name, x, y, z) {
       const gif = document.createElement("img")
       gif.src = name
-      page2.appendChild(gif)
+      resize.appendChild(gif)
       gif.style.position = "absolute"
       gif.style.left = x + "px"
       gif.style.top = y + "px"
@@ -175,8 +173,8 @@
     }
 
     function createGifBg() {
-      for (let r = 0; r < h / 122; r++) {
-        for (let c = 0; c < w / 122; c++) {
+      for (let r = 0; r < window.innerHeight / 122; r++) {
+        for (let c = 0; c < window.innerWidth / 122; c++) {
           const x = c * 122;
           const y = r * 122;
           createGif("heart.gif", x, y, -2)
@@ -186,33 +184,38 @@
 
     function createGifCircle(num, scale, radius) {
       for (let i = 0; i < num; i++) {
-        const x = cx + Math.sin(i * scale) * radius
-        const y = cy + Math.cos(i * scale) * radius
+        const x = (window.innerWidth / 2 - gifw) + Math.sin(i * scale) * radius
+        const y = (window.innerHeight / 2 - gifh) + Math.cos(i * scale) * radius
         createGif("computer.gif", x, y, 0)
       }
     }
-
-    let theta = 0
-    let radius = 60
-    let eyeX = cx - 200
+    
     let eyeGif
 
     function makeSine() {
-      requestAnimationFrame(makeSine)
-      theta += 0.05
-      y = Math.sin(theta) * radius + cy
-      eyeX++
-      if (eyeX > cx + 200) {
-        eyeX = cx - 200
+      let theta = 0
+      let radius = 60
+      let cx = window.innerWidth / 2 - gifw
+      let cy = window.innerHeight / 2 - gifh
+      let eyeX = cx - 200
+      function nested() {
+        requestAnimationFrame(nested)
+        let y = Math.sin(theta) * radius + cy 
+        eyeGif.style.top = y + "px" 
+        eyeGif.style.left = eyeX + "px"
+        theta += 0.05
+        eyeX++
+        if (eyeX > cx + 200) { 
+          eyeX = cx - 200
+        } 
       }
-      eyeGif.style.top = y + "px"
-      eyeGif.style.left = eyeX + "px"
+      return nested()
     }
 
     function createGifSine() {
       eyeGif = document.createElement("img")
       eyeGif.src = "eye.gif"
-      page2.appendChild(eyeGif)
+      resize.appendChild(eyeGif)
       eyeGif.style.position = "absolute"
       eyeGif.style.width = 40 + "px"
       makeSine()
@@ -220,30 +223,31 @@
 
     function createGifRandom() {
       for (let i = 0; i < 50; i++) {
-        x = Math.random() * w
-        y = Math.random() * h
+        let x = Math.random() * window.innerWidth
+        let y = Math.random() * window.innerHeight
         createGif("eye.gif", x, y, -1)
       }
     }
 
     function setup() {
+      resize.innerHTML = "" 
       createGifBg()
       createGifRandom()
       createGifCircle(1, 0, 0)
       createGifCircle(16, 0.4, 100)
       createGifCircle(32, 0.2, 200)
-      createGifSine()
+      createGifSine() 
     }
-
+ 
     function art() {
       document.body.style.backgroundColor = "#ffc4d6"
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden"
       page0.style.display = "none"
       page1.style.display = "none"
       page2.style.display = "block"
     }
 
-    btn1.addEventListener("click", setup)
     btn1.addEventListener("click", art)
+    window.addEventListener("resize", setup)
   </script>
 </html>
