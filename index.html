@@ -100,6 +100,10 @@
 
     let w = window.innerWidth
     let h = window.innerHeight
+    let gifw = 50
+    let gifh = 50
+    let cx = w / 2 - gifw
+    const cy = h / 2 - gifh
     let page2 = document.getElementById("page-2")
 
     function createGif(name, x, y) {
@@ -113,24 +117,52 @@
 
     function createGifCircle(num, scale, radius) {
       for (let i = 0; i < num; i++) {
-        const cx = window.innerWidth / 2 - gifOffsetX
-        const cy = window.innerHeight / 2 - gifOffsetY
         const x = cx + Math.sin(i * scale) * radius
         const y = cy + Math.cos(i * scale) * radius
-        createGif(x, y)
+        createGif("computer.gif", x, y)
       }
+    }
+    
+    let theta = 0
+    let radius = 60
+    let eyeX = 200
+    let gif
+    
+    function makeSine() {
+      requestAnimationFrame(makeSine)
+      theta += 0.05
+      y = Math.sin(theta) * radius + cy 
+      eyeX++
+      if (eyeX > cx + 200) {
+        eyeX = cx - 200
+      }
+      gif.style.left = eyeX + 'px'
+      gif.style.top = y + 'px'
+    }
+    
+    function createGifSine() {
+      gif = document.createElement("img")
+      gif.src = "eye.gif"
+      page2.appendChild(gif)
+      gif.style.position = 'absolute'
+      gif.style.width = 40 + 'px'
+      makeSine()
     }
 
     function setup() {
       document.body.style.backgroundColor = "#ffc4d6"
       document.body.style.overflow = 'hidden'
       for (let r = 0; r < h / 122; r++) {
-        for (let c = 0; c < w / 122; c++) {
+        for (let c = 0; c < w / 122; c++) { 
           const x = c * 122;
           const y = r * 122;
           createGif("heart.gif", x, y)
         }
       }
+      createGifCircle (1, 0, 0)
+      createGifCircle(16, 0.4, 100)
+      createGifCircle (32, 0.2, 200)
+      createGifSine()
     }
 
     window.addEventListener('load', setup)
