@@ -106,20 +106,21 @@
     const cy = h / 2 - gifh
     let page2 = document.getElementById("page-2")
 
-    function createGif(name, x, y) {
+    function createGif(name, x, y, z) {
       const gif = document.createElement("img")
       gif.src = name
       page2.appendChild(gif)
       gif.style.position = 'absolute'
       gif.style.left = x + 'px'
       gif.style.top = y + 'px'
+      gif.style.zIndex = z
     }
 
     function createGifCircle(num, scale, radius) {
       for (let i = 0; i < num; i++) {
         const x = cx + Math.sin(i * scale) * radius
         const y = cy + Math.cos(i * scale) * radius
-        createGif("computer.gif", x, y)
+        createGif("computer.gif", x, y, 0)
       }
     }
     
@@ -148,6 +149,18 @@
       gif.style.width = 40 + 'px'
       makeSine()
     }
+    
+    function createGifRandom() {
+      for (let  i = 0; i < 50; i++) {
+        let gif = document.createElement('img')
+        gif.src = 'eye.gif'
+        gif.style.position = 'absolute'
+        gif.style.top = Math.random() * h + 'px'
+        gif.style.left = Math.random() * w + 'px'
+        gif.style.zIndex = -1
+        document.body.appendChild(gif) 
+      }
+    }
 
     function setup() {
       document.body.style.backgroundColor = "#ffc4d6"
@@ -156,9 +169,10 @@
         for (let c = 0; c < w / 122; c++) { 
           const x = c * 122;
           const y = r * 122;
-          createGif("heart.gif", x, y)
+          createGif("heart.gif", x, y, -2)
         }
       }
+      createGifRandom()
       createGifCircle (1, 0, 0)
       createGifCircle(16, 0.4, 100)
       createGifCircle (32, 0.2, 200)
