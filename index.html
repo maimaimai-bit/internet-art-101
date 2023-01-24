@@ -37,12 +37,19 @@
         font-size: 14px;
         font-style: italic;
       }
-
       #label {
         margin: auto;
         width: 420px;
       }
-    </style>
+      #page-2 p {
+        text-align: center;
+        margin-top: 35px;
+        font-size: 18px;
+        font-family: Courier;
+        background-color: #fdd5e4;
+        color: #ef7b90;
+      }
+    </style> 
   </head>
 
   <body>
@@ -66,7 +73,8 @@
     </div>
 
     <div id="page-2">
-
+      <p>You were, are, and will be at Internet Art</p>
+      <p>Internet Art can be anything</p>
     </div>
 
   </body>
@@ -100,11 +108,11 @@
 
     let w = window.innerWidth
     let h = window.innerHeight
-    let gifw = 50
-    let gifh = 50
+    let gifw = 28
+    let gifh = 35
     let cx = w / 2 - gifw
-    const cy = h / 2 - gifh
-    let page2 = document.getElementById("page-2")
+    const cy = h / 2 - gifh 
+    let  page2 = document.getElementById("page-2")
 
     function createGif(name, x, y, z) {
       const gif = document.createElement("img")
