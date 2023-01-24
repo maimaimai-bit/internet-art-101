@@ -12,22 +12,22 @@
         width: 100%;
         display: grid;
       }
-      
+
       .btn-basic p {
         margin: 1.5px;
       }
-      
+
       .btn-basic {
         margin: auto;
       }
-      
+
       #page-1 {
         background: url("museum-label.png") no-repeat center center fixed;
         background-size: cover;
         height: 100%;
         overflow: hidden;
       }
-      
+
       #read {
         position: absolute;
         bottom: 5px;
@@ -37,12 +37,12 @@
         font-size: 14px;
         font-style: italic;
       }
-      
+
       #label {
         margin: auto;
         width: 420px;
       }
-      
+
       #page-2 p {
         text-align: center;
         font-size: 18px;
@@ -58,12 +58,42 @@
       #bot {
         position: absolute;
         bottom: 0px;
-        width: 100%;
+        width: 98%;
       }
 
       #bot p {
         text-align: center;
         margin-bottom: 30px;
+      }
+
+      .typewriter p {
+        overflow: hidden;
+        border-right: .15em solid #ef7b90;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .1em;
+        animation:
+          typing 3.5s steps(40, end),
+          blink-caret .75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0
+        }
+        to {
+          width: 100%
+        }
+      }
+
+      @keyframes blink-caret {
+        from,
+        to {
+          border-color: transparent
+        }
+        50% { 
+          border-color: #ef7b90;
+        }
       }
     </style>
   </head>
@@ -87,15 +117,15 @@
       </div>
     </div>
 
-    <div id="page-2" style="display: none">
+    <div id="page-2" class="typewriter" style="display: none">
       <div id="top">
         <p>Did the HTML button not satisfy you?</p>
         <p>Or were you just curious?</p>
       </div>
       <div id="bot">
-        <p>Internet Art can be all the colors, movements, and glitches... but it doesn't have to be</p>
-        <p>You were, are, and will be at Internet Art</p>
-        <p style="background-color: #01ffff; color: #0c40a0">Internet Art can be anything</p>
+        <p>Let go of the colors, movements, and glitches!</p>
+        <p>You were, are, and will be at Internet Art...</p>
+        <p>Internet Art can be anything.</p>
       </div>
     </div>
   </body>
@@ -145,7 +175,7 @@
       gif.style.top = y + "px"
       gif.style.zIndex = z
     }
-    
+
     function createGifBg() {
       for (let r = 0; r < h / 122; r++) {
         for (let c = 0; c < w / 122; c++) {
@@ -166,7 +196,7 @@
 
     let theta = 0
     let radius = 60
-    let eyeX = cx - 200 
+    let eyeX = cx - 200
     let eyeGif
 
     function makeSine() {
@@ -193,20 +223,20 @@
     function createGifRandom() {
       for (let i = 0; i < 50; i++) {
         x = Math.random() * w
-        y = Math.random() * h 
+        y = Math.random() * h
         createGif("eye.gif", x, y, -1)
       }
     }
 
     function setup() {
       createGifBg()
-      createGifRandom() 
+      createGifRandom()
       createGifCircle(1, 0, 0)
       createGifCircle(16, 0.4, 100)
       createGifCircle(32, 0.2, 200)
-      createGifSine() 
+      createGifSine()
     }
-    
+
     function art() {
       document.body.style.backgroundColor = "#ffc4d6"
       document.body.style.overflow = 'hidden'
@@ -216,6 +246,6 @@
     }
 
     btn1.addEventListener("click", setup)
-    btn1.addEventListener("click", art) 
+    btn1.addEventListener("click", art)
   </script>
 </html>
