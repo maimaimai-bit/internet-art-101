@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
-	<head>
-		<meta charset="utf-8">
-		<title>Internet Art</title>
+  <head>
+    <meta charset="utf-8">
+    <title>Internet Art</title>
     <style>
       #page-1 {
         background: url("museum-label.png") no-repeat center center fixed;
@@ -10,6 +10,7 @@
         height: 100%;
         overflow: hidden;
       }
+
       .container {
         position: absolute;
         top: 0;
@@ -18,14 +19,17 @@
         width: 100%;
         display: grid;
       }
+
       .btn-basic p {
         margin: 1.5px;
       }
+
       .btn-basic {
-				margin: auto;  
+        margin: auto;
       }
+
       #read {
-				position: absolute;
+        position: absolute;
         bottom: 5px;
         right: 25px;
         color: #F3CE32;
@@ -33,62 +37,102 @@
         font-size: 14px;
         font-style: italic;
       }
+
       #label {
         margin: auto;
         width: 420px;
       }
-      
     </style>
-	</head>
-  
-	<body>
-<!--     should be grid here -->
-    <div id="page-0" class="container" style="display: none"> 
-      <button class="btn-basic" id="btn-0"><p>Take me to the Internet Art</p></button>
+  </head>
+
+  <body>
+    <!--     should be grid here -->
+    <div id="page-0" class="container" style="display: none">
+      <button class="btn-basic" id="btn-0">
+        <p>Take me to the Internet Art</p>
+      </button>
     </div>
-    
+
     <div id="page-1" style="display: none">
       <p id="read">press any key to read the exhibit label</p>
       <div class="container">
-        <button class="btn-basic" id="btn-1"><p>Take me to the Internet Art</p></button>
+        <button class="btn-basic" id="btn-1">
+          <p>Take me to the Internet Art</p>
+        </button>
       </div>
       <div id="label-div" class="container" style="display: none">
         <img id="label" src="label.png" alt="museum exhibit label">
       </div>
     </div>
-    
+
     <div id="page-2">
-      
+
     </div>
-    
-	</body>
-  
-  <script>  
+
+  </body>
+
+  <script>
     let btn0 = document.getElementById("btn-0")
     let page0 = document.getElementById("page-0")
     let page1 = document.getElementById("page-1")
     let label = document.getElementById("label-div")
     let read = document.getElementById("read")
-    
+
     function museum() {
       page0.style.display = "none"
-    	page1.style.display = "grid"
+      page1.style.display = "grid"
     }
-    
+
     function close() {
       label.style.display = "none"
       read.innerText = "press any key to read the exhibit label"
       window.removeEventListener("keypress", close)
     }
-    
+
     function open() {
       label.style.display = "grid"
       read.innerText = "press any key to close the exhibit label"
       window.addEventListener("keypress", close)
     }
-     
+
     btn0.addEventListener("click", museum)
     window.addEventListener("keypress", open)
-    
+
+    let w = window.innerWidth
+    let h = window.innerHeight
+    let page2 = document.getElementById("page-2")
+
+    function createGif(name, x, y) {
+      const gif = document.createElement("img")
+      gif.src = name
+      page2.appendChild(gif)
+      gif.style.position = 'absolute'
+      gif.style.left = x + 'px'
+      gif.style.top = y + 'px'
+    }
+
+    function createGifCircle(num, scale, radius) {
+      for (let i = 0; i < num; i++) {
+        const cx = window.innerWidth / 2 - gifOffsetX
+        const cy = window.innerHeight / 2 - gifOffsetY
+        const x = cx + Math.sin(i * scale) * radius
+        const y = cy + Math.cos(i * scale) * radius
+        createGif(x, y)
+      }
+    }
+
+    function setup() {
+      document.body.style.backgroundColor = "#ffc4d6"
+      document.body.style.overflow = 'hidden'
+      for (let r = 0; r < h / 122; r++) {
+        for (let c = 0; c < w / 122; c++) {
+          const x = c * 122;
+          const y = r * 122;
+          createGif("heart.gif", x, y)
+        }
+      }
+    }
+
+    window.addEventListener('load', setup)
   </script>
 </html>
