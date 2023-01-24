@@ -35,7 +35,7 @@
         color: #F3CE32;
         font-family: Arial;
         font-size: 14px;
-        font-style: italic;
+      font-style: italic;
       }
       #label {
         margin: auto;
@@ -43,18 +43,29 @@
       }
       #page-2 p {
         text-align: center;
-        margin-top: 35px;
         font-size: 18px;
         font-family: Courier;
         background-color: #fdd5e4;
         color: #ef7b90;
+      }
+      #top p {
+        margin-top: 35px;
+      }
+      #bot {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+      }
+      #bot p {
+        text-align: center;
+        margin-bottom: 27px;
       }
     </style> 
   </head>
 
   <body>
     <!--     should be grid here -->
-    <div id="page-0" class="container" style="display: none">
+    <div id="page-0" class="container" style="display: grid">
       <button class="btn-basic" id="btn-0">
         <p>Take me to the Internet Art</p>
       </button>
@@ -72,15 +83,23 @@
       </div>
     </div>
 
-    <div id="page-2">
-      <p>You were, are, and will be at Internet Art</p>
-      <p>Internet Art can be anything</p>
+    <div id="page-2" style="display: none">
+      <div id="top">
+      	<p>Did the HTML button not satisfy you?</p>
+      	<p>Or were you just curious?</p>
+      </div>
+      <div id="bot">
+        <p>Internet Art can be dazzling colors, mesmerizing movements, and glaring glitchess... but it doesn't have to be.</p>
+        <p>You were, are, and will be at Internet Art.</p>
+      	<p>Internet Art can be anything.</p>
+      </div>
     </div>
 
   </body>
 
   <script>
     let btn0 = document.getElementById("btn-0")
+    let btn1 = document.getElementById("btn-1")
     let page0 = document.getElementById("page-0")
     let page1 = document.getElementById("page-1")
     let label = document.getElementById("label-div")
@@ -99,12 +118,21 @@
 
     function open() {
       label.style.display = "grid"
-      read.innerText = "press any key to close the exhibit label"
+      read.innerText = "press any key to close the exhibit label" 
       window.addEventListener("keypress", close)
+    }
+    
+    function art() {
+      document.body.style.backgroundColor = "#ffc4d6"
+      page0.style.display = "none"
+      page1.style.display = "none"
+      page2.style.display = "block"
     }
 
     btn0.addEventListener("click", museum)
     window.addEventListener("keypress", open)
+    btn1.addEventListener("click", art)
+    
 
     let w = window.innerWidth
     let h = window.innerHeight
@@ -166,12 +194,11 @@
         gif.style.top = Math.random() * h + 'px'
         gif.style.left = Math.random() * w + 'px'
         gif.style.zIndex = -1
-        document.body.appendChild(gif) 
+        page2.appendChild(gif) 
       }
     }
 
     function setup() {
-      document.body.style.backgroundColor = "#ffc4d6"
       document.body.style.overflow = 'hidden'
       for (let r = 0; r < h / 122; r++) {
         for (let c = 0; c < w / 122; c++) { 
