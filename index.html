@@ -25,7 +25,7 @@
         background: url("museum-label.png") no-repeat center center fixed;
         background-size: cover;
         height: 100%;
-        overflow: hidden; 
+        overflow: hidden;
       }
 
       #read {
@@ -41,29 +41,6 @@
       #label {
         margin: auto;
         width: 450px;
-      }
-
-      #page-2 p {
-        text-align: center;
-        font-size: 18px;
-        font-family: Courier;
-        background-color: #fdd5e4;
-        color: #ef7b90;
-      }
-
-      #top p {
-        margin-top: 40px;
-      }
-
-      #bot {
-        position: absolute;
-        bottom: 0px;
-        width: 99%;
-      }
-
-      #bot p {
-        text-align: center;
-        margin-bottom: 30px;
       }
 
       .typewriter p {
@@ -87,13 +64,35 @@
       }
 
       @keyframes blink-caret {
-        from,
-        to { 
+        from, to {
           border-color: transparent
         }
-        50% { 
+        50% {
           border-color: #ef7b90;
         }
+      }
+      
+      #page-2 p {
+        text-align: center;
+        font-size: 18px;
+        font-family: Courier;
+        background-color: #fdd5e4;
+        color: #ef7b90;
+      }
+
+      #top p {
+        margin-top: 40px;
+      }
+
+      #bot {
+        position: absolute;
+        bottom: 0px;
+        width: 99%;
+      }
+
+      #bot p {
+        text-align: center;
+        margin-bottom: 30px;
       }
     </style>
   </head>
@@ -125,7 +124,7 @@
         <p>You were, are, and will be at Internet Art...</p>
         <p>Internet Art can be anything.</p>
       </div>
-      <div id="resize" class="container">	</div> 
+      <div id="resize" class="container"> </div>
     </div>
   </body>
 
@@ -189,7 +188,7 @@
         createGif("computer.gif", x, y, 0)
       }
     }
-    
+
     let eyeGif
 
     function makeSine() {
@@ -200,14 +199,14 @@
       let eyeX = cx - 200
       function nested() {
         requestAnimationFrame(nested)
-        let y = Math.sin(theta) * radius + cy 
-        eyeGif.style.top = y + "px" 
+        let y = Math.sin(theta) * radius + cy
+        eyeGif.style.top = y + "px"
         eyeGif.style.left = eyeX + "px"
         theta += 0.05
         eyeX++
-        if (eyeX > cx + 200) { 
+        if (eyeX > cx + 200) {
           eyeX = cx - 200
-        } 
+        }
       }
       return nested()
     }
@@ -230,15 +229,15 @@
     }
 
     function setup() {
-      resize.innerHTML = "" 
+      resize.innerHTML = ""
       createGifBg()
       createGifRandom()
       createGifCircle(1, 0, 0)
       createGifCircle(16, 0.4, 100)
       createGifCircle(32, 0.2, 200)
-      createGifSine() 
+      createGifSine()
     }
- 
+
     function art() {
       document.body.style.backgroundColor = "#ffc4d6"
       document.body.style.overflow = "hidden"
